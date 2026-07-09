@@ -1,0 +1,171 @@
+# Android SDK Maven Central 사용방법
+
+좌표:
+
+io.github.conx-dev:hive-axyl-android-sdk:<VERSION>
+
+배포 대상:
+
+https://central.sonatype.com
+
+공식 문서:
+
+https://central.sonatype.org/publish/requirements/
+https://central.sonatype.org/publish/requirements/gpg/
+https://central.sonatype.org/publish/publish-portal-upload/
+
+1. 최초 1회 준비
+
+Sonatype Central Portal 계정을 만든다.
+
+https://central.sonatype.com
+
+Namespace `io.github.conx-dev`를 등록하고 검증한다.
+
+Maven Central 요구사항:
+
+- sources jar 필요
+- javadoc jar 필요
+- pom metadata 필요
+- checksum 필요
+- GPG 서명 `.asc` 필요
+- 한번 publish 된 버전은 수정/삭제/덮어쓰기 불가
+
+2. GPG 키 준비
+
+키가 없으면 생성한다.
+
+gpg --full-generate-key
+
+키를 확인한다.
+
+gpg --list-secret-keys --keyid-format LONG
+
+공개키를 배포한다.
+
+gpg --keyserver keyserver.ubuntu.com --send-keys <KEY_ID>
+
+3. 로컬 Gradle 서명 설정
+
+아래 값은 저장소에 커밋하지 않는다.
+로컬 PC는 `~/.gradle/gradle.properties`에만 둔다.
+CI에서는 secret으로만 주입한다.
+
+signingKeyId=<KEY_ID>
+signingPassword=<GPG_KEY_PASSWORD>
+signingKey=<ASCII_ARMORED_PRIVATE_KEY_WITH_ESCAPED_NEWLINES>
+
+`signingKey` 값은 private key를 한 줄로 바꿔 넣는다.
+
+gpg --armor --export-secret-keys <KEY_ID> | awk 'NF {sub(/\r$/, ""); printf "%s\\n",$0;}'
+
+4. 버전 올리기
+
+파일:
+
+gradle.properties
+README.md
+
+수정할 값:
+
+VERSION_NAME=0.1.1
+implementation("io.github.conx-dev:hive-axyl-android-sdk:0.1.1")
+
+버전 기준:
+
+- patch: 버그 수정, 문서 수정, 호환 유지
+- minor: 공개 API 추가, 기존 API 호환 유지
+- major: 기존 사용자 코드 수정이 필요한 변경
+
+이미 Maven Central에 publish 된 버전은 다시 올리지 않는다.
+검증 실패만 난 deployment는 Portal에서 drop 후 같은 버전으로 다시 만들 수 있지만, publish 완료 후에는 반드시 새 버전을 사용한다.
+
+5. 릴리스 빌드 검증
+
+JDK 21을 사용한다.
+
+JAVA_HOME=/opt/homebrew/Cellar/openjdk@21/21.0.8/libexec/openjdk.jdk/Contents/Home \
+GRADLE_USER_HOME=/private/tmp/hive-ng-gradle \
+gradle :sdk:clean :sdk:assembleRelease
+
+로컬 Maven publish를 검증한다.
+
+JAVA_HOME=/opt/homebrew/Cellar/openjdk@21/21.0.8/libexec/openjdk.jdk/Contents/Home \
+GRADLE_USER_HOME=/private/tmp/hive-ng-gradle \
+gradle :sdk:publishToMavenLocal -Dmaven.repo.local=/private/tmp/hive-ng-m2
+
+생성물을 확인한다.
+
+find /private/tmp/hive-ng-m2/io/github/conx-dev/hive-axyl-android-sdk/<VERSION> -maxdepth 1 -type f -print | sort
+
+6. Maven Central 업로드 번들 생성
+
+릴리스 버전은 GPG 서명 설정이 있어야 성공한다.
+
+JAVA_HOME=/opt/homebrew/Cellar/openjdk@21/21.0.8/libexec/openjdk.jdk/Contents/Home \
+GRADLE_USER_HOME=/private/tmp/hive-ng-gradle \
+gradle :sdk:generateMavenCentralBundle
+
+결과 파일:
+
+sdk/build/distributions/hive-axyl-android-sdk-<VERSION>-maven-central.zip
+
+zip 안에 `.asc`, `.pom`, `.aar`, sources jar, javadoc jar가 있는지 확인한다.
+
+unzip -l sdk/build/distributions/hive-axyl-android-sdk-<VERSION>-maven-central.zip
+
+7. Central Portal에 실제 배포
+
+https://central.sonatype.com 에 로그인한다.
+
+Publishing 메뉴에서 Publish Component를 선택한다.
+
+Deployment Name:
+
+io.github.conx-dev:hive-axyl-android-sdk:<VERSION>
+
+Upload File:
+
+sdk/build/distributions/hive-axyl-android-sdk-<VERSION>-maven-central.zip
+
+업로드 후 validation 결과를 확인한다.
+실패하면 deployment를 drop하고 원인을 수정한 뒤 다시 bundle을 만든다.
+성공하면 Publish/Release를 눌러 Maven Central에 공개한다.
+
+8. 공개 확인
+
+Central Portal에서 artifact를 확인한다.
+
+https://central.sonatype.com/artifact/io.github.conx-dev/hive-axyl-android-sdk
+
+외부 Android 프로젝트에서 확인한다.
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    implementation("io.github.conx-dev:hive-axyl-android-sdk:<VERSION>")
+}
+
+9. 릴리스 커밋과 태그
+
+git add gradle.properties README.md "maven central 사용방법.txt" sdk/build.gradle.kts
+git commit -m "chore: release android sdk <VERSION>"
+git tag android-sdk-v<VERSION>
+
+원격 저장소가 설정되어 있으면 push한다.
+
+git push
+git push origin android-sdk-v<VERSION>
+
+10. 다음 버전 배포 요약
+
+1. `VERSION_NAME`과 README 설치 버전을 새 버전으로 수정한다.
+2. `:sdk:assembleRelease`로 빌드한다.
+3. `:sdk:publishToMavenLocal`로 로컬 Maven publish를 확인한다.
+4. `:sdk:generateMavenCentralBundle`로 업로드 zip을 만든다.
+5. Central Portal에 zip을 업로드하고 validation을 통과시킨다.
+6. Publish/Release 후 외부 프로젝트에서 dependency resolve를 확인한다.
+7. 릴리스 커밋과 `android-sdk-v<VERSION>` 태그를 남긴다.

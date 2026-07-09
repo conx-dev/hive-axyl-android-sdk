@@ -2,7 +2,6 @@ import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.publish.maven.tasks.PublishToMavenRepository
 import org.gradle.api.tasks.bundling.Zip
 import org.gradle.jvm.tasks.Jar
-import org.gradle.plugins.signing.Sign
 
 plugins {
     id("com.android.library")
@@ -139,12 +138,6 @@ signing {
         }
     }
     sign(publishing.publications["release"])
-}
-
-tasks.withType<Sign>().configureEach {
-    onlyIf {
-        signing.signatory != null || signing.isRequired
-    }
 }
 
 tasks.register<Zip>("generateMavenCentralBundle") {

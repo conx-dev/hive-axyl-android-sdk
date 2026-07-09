@@ -119,6 +119,7 @@ publishing {
 signing {
     val signingKeyId = providers.gradleProperty("signingKeyId").orNull
     val signingKey = providers.gradleProperty("signingKey").orNull
+        ?.replace("\\n", "\n")
     val signingPassword = providers.gradleProperty("signingPassword").orNull
 
     if (!signingKey.isNullOrBlank()) {

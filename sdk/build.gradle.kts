@@ -1,5 +1,6 @@
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.publish.maven.tasks.PublishToMavenRepository
+import org.gradle.api.tasks.Delete
 import org.gradle.api.tasks.bundling.Zip
 import org.gradle.jvm.tasks.Jar
 
@@ -118,6 +119,8 @@ publishing {
 
 signing {
     val signingKeyId = providers.gradleProperty("signingKeyId").orNull
+        ?.removePrefix("0x")
+        ?.takeLast(8)
     val signingKey = providers.gradleProperty("signingKey").orNull
         ?.replace("\\n", "\n")
     val signingPassword = providers.gradleProperty("signingPassword").orNull
@@ -141,13 +144,20 @@ signing {
     sign(publishing.publications["release"])
 }
 
+val cleanMavenCentralBundleRepository = tasks.register<Delete>("cleanMavenCentralBundleRepository") {
+    delete(layout.buildDirectory.dir("maven-central-bundle-repository"))
+}
+
+val publishReleasePublicationToMavenCentralBundleRepository = tasks.named(
+    "publishReleasePublicationToMavenCentralBundleRepository",
+    PublishToMavenRepository::class.java
+) {
+    dependsOn(cleanMavenCentralBundleRepository)
+}
+
 tasks.register<Zip>("generateMavenCentralBundle") {
-    val publishTask = tasks.named(
-        "publishReleasePublicationToMavenCentralBundleRepository",
-        PublishToMavenRepository::class.java
-    )
-    dependsOn(publishTask)
-    from(publishTask.map { task -> task.repository.url })
+    dependsOn(publishReleasePublicationToMavenCentralBundleRepository)
+    from(publishReleasePublicationToMavenCentralBundleRepository.map { task -> task.repository.url })
     archiveFileName.set("$publishingArtifactId-$publishingVersion-maven-central.zip")
 }
 

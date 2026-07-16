@@ -22,7 +22,8 @@ import kotlin.coroutines.suspendCoroutine
 
 class AuthApi internal constructor(
     private val session: Session,
-    private val executor: ExecutorService
+    private val executor: ExecutorService,
+    private val guestInstallation: GuestInstallation
 ) {
     private val lock = Object()
     private var client: ConnectClient? = null
@@ -148,18 +149,17 @@ class AuthApi internal constructor(
         }
     }
 
-    suspend fun loginAsGuest(deviceId: String): Player {
+    suspend fun loginAsGuest(): Player {
         return suspendCoroutine { continuation ->
-            loginAsGuest(deviceId, continuation.asCallback())
+            loginAsGuest(continuation.asCallback())
         }
     }
 
-    fun loginAsGuest(deviceId: String, callback: HiveAxylCallback<Player>) {
-        if (deviceId.isEmpty()) {
-            callback.onError(HiveAxylException.invalidArgument("deviceId is required"))
-            return
+    fun loginAsGuest(callback: HiveAxylCallback<Player>) {
+        runAsync(callback) {
+            val credential = guestInstallation.getOrCreateCredential()
+            loginBlocking(IdentityProvider.IDENTITY_PROVIDER_GUEST, credential)
         }
-        login(IdentityProvider.IDENTITY_PROVIDER_GUEST, deviceId, callback)
     }
 
     suspend fun restoreSession(): Player? {
@@ -239,26 +239,30 @@ class AuthApi internal constructor(
         callback: HiveAxylCallback<Player>
     ) {
         runAsync(callback) {
-            val request = LoginWithProviderRequest.newBuilder()
-                .setProvider(provider)
-                .setProviderToken(providerToken)
-                .setPlatform(ClientPlatform.CLIENT_PLATFORM_ANDROID)
-                .build()
-            val response = requireClient().unary(
-                "AuthService",
-                "LoginWithProvider",
-                request,
-                LoginWithProviderResponse.parser()
-            )
-            if (!response.hasPlayer() || !response.hasTokenPair()) {
-                throw HiveAxylException.transport("login response missing player or token pair")
-            }
-
-            session.save(response.tokenPair)
-            val logged = response.player.toSdkPlayer()
-            setPlayer(logged)
-            logged
+            loginBlocking(provider, providerToken)
         }
+    }
+
+    private fun loginBlocking(provider: IdentityProvider, providerToken: String): Player {
+        val request = LoginWithProviderRequest.newBuilder()
+            .setProvider(provider)
+            .setProviderToken(providerToken)
+            .setPlatform(ClientPlatform.CLIENT_PLATFORM_ANDROID)
+            .build()
+        val response = requireClient().unary(
+            "AuthService",
+            "LoginWithProvider",
+            request,
+            LoginWithProviderResponse.parser()
+        )
+        if (!response.hasPlayer() || !response.hasTokenPair()) {
+            throw HiveAxylException.transport("login response missing player or token pair")
+        }
+
+        session.save(response.tokenPair)
+        val logged = response.player.toSdkPlayer()
+        setPlayer(logged)
+        return logged
     }
 
     private fun fetchCurrentPlayer(): Player {

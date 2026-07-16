@@ -17,13 +17,14 @@ class HiveAxyl private constructor(config: HiveAxylConfig) {
 
     private val resolvedConfig = ResolvedConfig.from(config)
     private val session = Session(resolveStorage(config))
+    private val guestInstallation = GuestInstallation(resolveGuestInstallationStorage(config))
     private val httpClient = config.httpClient
     private val executor = config.executor
     private val lock = Object()
     private var ready = false
 
     init {
-        auth = AuthApi(session, executor)
+        auth = AuthApi(session, executor, guestInstallation)
         notice = NoticeApi(executor)
         mailbox = MailboxApi(executor)
         payment = PaymentApi(executor)
@@ -183,6 +184,11 @@ class HiveAxyl private constructor(config: HiveAxylConfig) {
             return SharedPreferencesTokenStorage(context)
         }
         return InMemoryTokenStorage()
+    }
+
+    private fun resolveGuestInstallationStorage(config: HiveAxylConfig): GuestInstallationStorage? {
+        val context = config.context ?: return null
+        return SharedPreferencesGuestInstallationStorage(context)
     }
 
     private fun kotlin.coroutines.Continuation<Unit>.asCallback(): HiveAxylCallback<Unit> {

@@ -50,6 +50,10 @@ public enum ErrorCode
    */
   ERROR_CODE_UNAUTHENTICATED(6),
   /**
+   * <code>ERROR_CODE_RATE_LIMITED = 7;</code>
+   */
+  ERROR_CODE_RATE_LIMITED(7),
+  /**
    * <pre>
    * 게이트 / 접속 (100-199)
    * </pre>
@@ -217,6 +221,10 @@ public enum ErrorCode
    */
   public static final int ERROR_CODE_UNAUTHENTICATED_VALUE = 6;
   /**
+   * <code>ERROR_CODE_RATE_LIMITED = 7;</code>
+   */
+  public static final int ERROR_CODE_RATE_LIMITED_VALUE = 7;
+  /**
    * <pre>
    * 게이트 / 접속 (100-199)
    * </pre>
@@ -377,6 +385,7 @@ public enum ErrorCode
       case 4: return ERROR_CODE_ALREADY_EXISTS;
       case 5: return ERROR_CODE_PERMISSION_DENIED;
       case 6: return ERROR_CODE_UNAUTHENTICATED;
+      case 7: return ERROR_CODE_RATE_LIMITED;
       case 100: return ERROR_CODE_MAINTENANCE_IN_PROGRESS;
       case 101: return ERROR_CODE_GEO_BLOCKED;
       case 102: return ERROR_CODE_CLIENT_VERSION_UNSUPPORTED;

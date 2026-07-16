@@ -165,4 +165,5 @@ dependencies {
     api("com.google.protobuf:protobuf-javalite:4.35.0")
     api("com.android.billingclient:billing:9.1.0")
     api("com.squareup.okhttp3:okhttp:4.12.0")
+    testImplementation(kotlin("test"))
 }

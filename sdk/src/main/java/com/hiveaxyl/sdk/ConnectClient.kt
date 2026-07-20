@@ -7,7 +7,6 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
 import java.io.IOException
 
 internal class ConnectClient(
@@ -22,7 +21,6 @@ internal class ConnectClient(
 
     private val baseUrl = baseUrl.trimEnd('/')
     private val protoMediaType = "application/proto".toMediaType()
-    private val jsonMediaType = "application/json".toMediaType()
 
     fun <T : MessageLite> unary(
         service: String,
@@ -47,30 +45,6 @@ internal class ConnectClient(
                 throw error
             }
             sendOnce(service, method, request, parser)
-        }
-    }
-
-    fun postJson(path: String, body: String): String {
-        val requestBody = body.toRequestBody(jsonMediaType)
-        val builder = Request.Builder()
-            .url("$baseUrl$path")
-            .post(requestBody)
-            .header("Content-Type", "application/json")
-            .header("Accept", "application/json")
-        applyApiHeaders(builder)
-
-        val response = try {
-            httpClient.newCall(builder.build()).execute()
-        } catch (error: IOException) {
-            throw HiveAxylException.transport(error.message ?: "network error")
-        }
-
-        response.use {
-            val responseBody = it.body?.string().orEmpty()
-            if (!it.isSuccessful) {
-                throw HiveAxylException.transport(jsonErrorMessage(it.code, it.message, responseBody))
-            }
-            return responseBody
         }
     }
 
@@ -113,18 +87,6 @@ internal class ConnectClient(
         }
     }
 
-    private fun applyApiHeaders(builder: Request.Builder) {
-        val key = apiKey
-        if (key.isNullOrEmpty()) {
-            return
-        }
-
-        builder.header("Authorization", "Bearer $key")
-        if (language.isNotEmpty()) {
-            builder.header("X-Hive-Ng-Language", language)
-        }
-    }
-
     private fun applyAuthHeaders(builder: Request.Builder, method: String) {
         val key = apiKey
         if (key.isNullOrEmpty()) {
@@ -148,17 +110,4 @@ internal class ConnectClient(
         android.util.Log.d("HiveAxyl", message)
     }
 
-    private fun jsonErrorMessage(statusCode: Int, statusMessage: String, body: String): String {
-        if (body.isBlank()) {
-            return "HTTP_$statusCode: $statusMessage"
-        }
-        return try {
-            val json = JSONObject(body)
-            val code = json.optString("code", "HTTP_$statusCode")
-            val message = json.optString("message", statusMessage)
-            "$code: $message"
-        } catch (_: Exception) {
-            "HTTP_$statusCode: $statusMessage"
-        }
-    }
 }

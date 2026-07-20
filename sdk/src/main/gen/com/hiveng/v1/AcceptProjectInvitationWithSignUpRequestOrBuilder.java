@@ -6,21 +6,21 @@
 package com.hiveng.v1;
 
 @com.google.protobuf.Generated
-public interface SignUpRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:hiveng.v1.SignUpRequest)
+public interface AcceptProjectInvitationWithSignUpRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:hiveng.v1.AcceptProjectInvitationWithSignUpRequest)
     com.google.protobuf.MessageLiteOrBuilder {
 
   /**
-   * <code>string email = 1 [json_name = "email"];</code>
-   * @return The email.
+   * <code>string token = 1 [json_name = "token"];</code>
+   * @return The token.
    */
-  java.lang.String getEmail();
+  java.lang.String getToken();
   /**
-   * <code>string email = 1 [json_name = "email"];</code>
-   * @return The bytes for email.
+   * <code>string token = 1 [json_name = "token"];</code>
+   * @return The bytes for token.
    */
   com.google.protobuf.ByteString
-      getEmailBytes();
+      getTokenBytes();
 
   /**
    * <code>string password = 2 [json_name = "password"];</code>
@@ -45,16 +45,4 @@ public interface SignUpRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getNameBytes();
-
-  /**
-   * <code>string verification_token = 4 [json_name = "verificationToken"];</code>
-   * @return The verificationToken.
-   */
-  java.lang.String getVerificationToken();
-  /**
-   * <code>string verification_token = 4 [json_name = "verificationToken"];</code>
-   * @return The bytes for verificationToken.
-   */
-  com.google.protobuf.ByteString
-      getVerificationTokenBytes();
 }

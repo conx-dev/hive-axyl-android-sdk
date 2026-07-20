@@ -6,65 +6,64 @@
 package com.hiveng.v1;
 
 /**
- * Protobuf type {@code hiveng.v1.SignUpRequest}
+ * Protobuf type {@code hiveng.v1.AcceptProjectInvitationWithSignUpRequest}
  */
 @com.google.protobuf.Generated
-public  final class SignUpRequest extends
+public  final class AcceptProjectInvitationWithSignUpRequest extends
     com.google.protobuf.GeneratedMessageLite<
-        SignUpRequest, SignUpRequest.Builder> implements
-    // @@protoc_insertion_point(message_implements:hiveng.v1.SignUpRequest)
-    SignUpRequestOrBuilder {
-  private SignUpRequest() {
-    email_ = "";
+        AcceptProjectInvitationWithSignUpRequest, AcceptProjectInvitationWithSignUpRequest.Builder> implements
+    // @@protoc_insertion_point(message_implements:hiveng.v1.AcceptProjectInvitationWithSignUpRequest)
+    AcceptProjectInvitationWithSignUpRequestOrBuilder {
+  private AcceptProjectInvitationWithSignUpRequest() {
+    token_ = "";
     password_ = "";
     name_ = "";
-    verificationToken_ = "";
   }
-  public static final int EMAIL_FIELD_NUMBER = 1;
-  private java.lang.String email_;
+  public static final int TOKEN_FIELD_NUMBER = 1;
+  private java.lang.String token_;
   /**
-   * <code>string email = 1 [json_name = "email"];</code>
-   * @return The email.
+   * <code>string token = 1 [json_name = "token"];</code>
+   * @return The token.
    */
   @java.lang.Override
-  public java.lang.String getEmail() {
-    return email_;
+  public java.lang.String getToken() {
+    return token_;
   }
   /**
-   * <code>string email = 1 [json_name = "email"];</code>
-   * @return The bytes for email.
+   * <code>string token = 1 [json_name = "token"];</code>
+   * @return The bytes for token.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getEmailBytes() {
-    return com.google.protobuf.ByteString.copyFromUtf8(email_);
+      getTokenBytes() {
+    return com.google.protobuf.ByteString.copyFromUtf8(token_);
   }
   /**
-   * <code>string email = 1 [json_name = "email"];</code>
-   * @param value The email to set.
+   * <code>string token = 1 [json_name = "token"];</code>
+   * @param value The token to set.
    */
   @java.lang.SuppressWarnings("ReturnValueIgnored")
-  private void setEmail(
+  private void setToken(
       java.lang.String value) {
     value.getClass();  // minimal bytecode null check
 
-    email_ = value;
+    token_ = value;
   }
   /**
-   * <code>string email = 1 [json_name = "email"];</code>
+   * <code>string token = 1 [json_name = "token"];</code>
    */
-  private void clearEmail() {
+  private void clearToken() {
 
-    email_ = getDefaultInstance().getEmail();
+    token_ = getDefaultInstance().getToken();
   }
   /**
-   * <code>string email = 1 [json_name = "email"];</code>
-   * @param value The bytes for email to set.
+   * <code>string token = 1 [json_name = "token"];</code>
+   * @param value The bytes for token to set.
    */
-  private void setEmailBytes(
+  private void setTokenBytes(
       com.google.protobuf.ByteString value) {
     checkByteStringIsUtf8(value);
-    email_ = value.toStringUtf8();
+    token_ = value.toStringUtf8();
 
   }
 
@@ -164,98 +163,50 @@ public  final class SignUpRequest extends
 
   }
 
-  public static final int VERIFICATION_TOKEN_FIELD_NUMBER = 4;
-  private java.lang.String verificationToken_;
-  /**
-   * <code>string verification_token = 4 [json_name = "verificationToken"];</code>
-   * @return The verificationToken.
-   */
-  @java.lang.Override
-  public java.lang.String getVerificationToken() {
-    return verificationToken_;
-  }
-  /**
-   * <code>string verification_token = 4 [json_name = "verificationToken"];</code>
-   * @return The bytes for verificationToken.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getVerificationTokenBytes() {
-    return com.google.protobuf.ByteString.copyFromUtf8(verificationToken_);
-  }
-  /**
-   * <code>string verification_token = 4 [json_name = "verificationToken"];</code>
-   * @param value The verificationToken to set.
-   */
-  @java.lang.SuppressWarnings("ReturnValueIgnored")
-  private void setVerificationToken(
-      java.lang.String value) {
-    value.getClass();  // minimal bytecode null check
-
-    verificationToken_ = value;
-  }
-  /**
-   * <code>string verification_token = 4 [json_name = "verificationToken"];</code>
-   */
-  private void clearVerificationToken() {
-
-    verificationToken_ = getDefaultInstance().getVerificationToken();
-  }
-  /**
-   * <code>string verification_token = 4 [json_name = "verificationToken"];</code>
-   * @param value The bytes for verificationToken to set.
-   */
-  private void setVerificationTokenBytes(
-      com.google.protobuf.ByteString value) {
-    checkByteStringIsUtf8(value);
-    verificationToken_ = value.toStringUtf8();
-
-  }
-
-  public static com.hiveng.v1.SignUpRequest parseFrom(
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data);
   }
-  public static com.hiveng.v1.SignUpRequest parseFrom(
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data, extensionRegistry);
   }
-  public static com.hiveng.v1.SignUpRequest parseFrom(
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data);
   }
-  public static com.hiveng.v1.SignUpRequest parseFrom(
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data, extensionRegistry);
   }
-  public static com.hiveng.v1.SignUpRequest parseFrom(byte[] data)
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data);
   }
-  public static com.hiveng.v1.SignUpRequest parseFrom(
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, data, extensionRegistry);
   }
-  public static com.hiveng.v1.SignUpRequest parseFrom(java.io.InputStream input)
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, input);
   }
-  public static com.hiveng.v1.SignUpRequest parseFrom(
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -263,24 +214,24 @@ public  final class SignUpRequest extends
         DEFAULT_INSTANCE, input, extensionRegistry);
   }
 
-  public static com.hiveng.v1.SignUpRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return parseDelimitedFrom(DEFAULT_INSTANCE, input);
   }
 
-  public static com.hiveng.v1.SignUpRequest parseDelimitedFrom(
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
   }
-  public static com.hiveng.v1.SignUpRequest parseFrom(
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageLite.parseFrom(
         DEFAULT_INSTANCE, input);
   }
-  public static com.hiveng.v1.SignUpRequest parseFrom(
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -291,70 +242,70 @@ public  final class SignUpRequest extends
   public static Builder newBuilder() {
     return (Builder) DEFAULT_INSTANCE.createBuilder();
   }
-  public static Builder newBuilder(com.hiveng.v1.SignUpRequest prototype) {
+  public static Builder newBuilder(com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest prototype) {
     return DEFAULT_INSTANCE.createBuilder(prototype);
   }
 
   /**
-   * Protobuf type {@code hiveng.v1.SignUpRequest}
+   * Protobuf type {@code hiveng.v1.AcceptProjectInvitationWithSignUpRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageLite.Builder<
-        com.hiveng.v1.SignUpRequest, Builder> implements
-      // @@protoc_insertion_point(builder_implements:hiveng.v1.SignUpRequest)
-      com.hiveng.v1.SignUpRequestOrBuilder {
-    // Construct using com.hiveng.v1.SignUpRequest.newBuilder()
+        com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest, Builder> implements
+      // @@protoc_insertion_point(builder_implements:hiveng.v1.AcceptProjectInvitationWithSignUpRequest)
+      com.hiveng.v1.AcceptProjectInvitationWithSignUpRequestOrBuilder {
+    // Construct using com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest.newBuilder()
     private Builder() {
       super(DEFAULT_INSTANCE);
     }
 
 
     /**
-     * <code>string email = 1 [json_name = "email"];</code>
-     * @return The email.
+     * <code>string token = 1 [json_name = "token"];</code>
+     * @return The token.
      */
     @java.lang.Override
-    public java.lang.String getEmail() {
-      return instance.getEmail();
+    public java.lang.String getToken() {
+      return instance.getToken();
     }
     /**
-     * <code>string email = 1 [json_name = "email"];</code>
-     * @return The bytes for email.
+     * <code>string token = 1 [json_name = "token"];</code>
+     * @return The bytes for token.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getEmailBytes() {
-      return instance.getEmailBytes();
+        getTokenBytes() {
+      return instance.getTokenBytes();
     }
     /**
-     * <code>string email = 1 [json_name = "email"];</code>
-     * @param value The email to set.
+     * <code>string token = 1 [json_name = "token"];</code>
+     * @param value The token to set.
      * @return This builder for chaining.
      */
-    public Builder setEmail(
+    public Builder setToken(
         java.lang.String value) {
       copyOnWrite();
-      instance.setEmail(value);
+      instance.setToken(value);
       return this;
     }
     /**
-     * <code>string email = 1 [json_name = "email"];</code>
+     * <code>string token = 1 [json_name = "token"];</code>
      * @return This builder for chaining.
      */
-    public Builder clearEmail() {
+    public Builder clearToken() {
       copyOnWrite();
-      instance.clearEmail();
+      instance.clearToken();
       return this;
     }
     /**
-     * <code>string email = 1 [json_name = "email"];</code>
-     * @param value The bytes for email to set.
+     * <code>string token = 1 [json_name = "token"];</code>
+     * @param value The bytes for token to set.
      * @return This builder for chaining.
      */
-    public Builder setEmailBytes(
+    public Builder setTokenBytes(
         com.google.protobuf.ByteString value) {
       copyOnWrite();
-      instance.setEmailBytes(value);
+      instance.setTokenBytes(value);
       return this;
     }
 
@@ -456,56 +407,7 @@ public  final class SignUpRequest extends
       return this;
     }
 
-    /**
-     * <code>string verification_token = 4 [json_name = "verificationToken"];</code>
-     * @return The verificationToken.
-     */
-    @java.lang.Override
-    public java.lang.String getVerificationToken() {
-      return instance.getVerificationToken();
-    }
-    /**
-     * <code>string verification_token = 4 [json_name = "verificationToken"];</code>
-     * @return The bytes for verificationToken.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getVerificationTokenBytes() {
-      return instance.getVerificationTokenBytes();
-    }
-    /**
-     * <code>string verification_token = 4 [json_name = "verificationToken"];</code>
-     * @param value The verificationToken to set.
-     * @return This builder for chaining.
-     */
-    public Builder setVerificationToken(
-        java.lang.String value) {
-      copyOnWrite();
-      instance.setVerificationToken(value);
-      return this;
-    }
-    /**
-     * <code>string verification_token = 4 [json_name = "verificationToken"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearVerificationToken() {
-      copyOnWrite();
-      instance.clearVerificationToken();
-      return this;
-    }
-    /**
-     * <code>string verification_token = 4 [json_name = "verificationToken"];</code>
-     * @param value The bytes for verificationToken to set.
-     * @return This builder for chaining.
-     */
-    public Builder setVerificationTokenBytes(
-        com.google.protobuf.ByteString value) {
-      copyOnWrite();
-      instance.setVerificationTokenBytes(value);
-      return this;
-    }
-
-    // @@protoc_insertion_point(builder_scope:hiveng.v1.SignUpRequest)
+    // @@protoc_insertion_point(builder_scope:hiveng.v1.AcceptProjectInvitationWithSignUpRequest)
   }
   @java.lang.Override
   @java.lang.SuppressWarnings({"ThrowNull"})
@@ -514,34 +416,33 @@ public  final class SignUpRequest extends
       java.lang.Object arg0, java.lang.Object arg1) {
     switch (method) {
       case NEW_MUTABLE_INSTANCE: {
-        return new com.hiveng.v1.SignUpRequest();
+        return new com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest();
       }
       case NEW_BUILDER: {
         return new Builder();
       }
       case BUILD_MESSAGE_INFO: {
           java.lang.Object[] objects = new java.lang.Object[] {
-            "email_",
+            "token_",
             "password_",
             "name_",
-            "verificationToken_",
           };
           java.lang.String info =
-              "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
-              "\u0003\u0208\u0004\u0208";
+              "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+              "\u0003\u0208";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       case GET_DEFAULT_INSTANCE: {
         return DEFAULT_INSTANCE;
       }
       case GET_PARSER: {
-        com.google.protobuf.Parser<com.hiveng.v1.SignUpRequest> parser = PARSER;
+        com.google.protobuf.Parser<com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest> parser = PARSER;
         if (parser == null) {
-          synchronized (com.hiveng.v1.SignUpRequest.class) {
+          synchronized (com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest.class) {
             parser = PARSER;
             if (parser == null) {
               parser =
-                  new DefaultInstanceBasedParser<com.hiveng.v1.SignUpRequest>(
+                  new DefaultInstanceBasedParser<com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest>(
                       DEFAULT_INSTANCE);
               PARSER = parser;
             }
@@ -561,24 +462,24 @@ public  final class SignUpRequest extends
   }
 
 
-  // @@protoc_insertion_point(class_scope:hiveng.v1.SignUpRequest)
-  private static final com.hiveng.v1.SignUpRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:hiveng.v1.AcceptProjectInvitationWithSignUpRequest)
+  private static final com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest DEFAULT_INSTANCE;
   static {
-    SignUpRequest defaultInstance = new SignUpRequest();
+    AcceptProjectInvitationWithSignUpRequest defaultInstance = new AcceptProjectInvitationWithSignUpRequest();
     // New instances are implicitly immutable so no need to make
     // immutable.
     DEFAULT_INSTANCE = defaultInstance;
     com.google.protobuf.GeneratedMessageLite.registerDefaultInstance(
-      SignUpRequest.class, defaultInstance);
+      AcceptProjectInvitationWithSignUpRequest.class, defaultInstance);
   }
 
-  public static com.hiveng.v1.SignUpRequest getDefaultInstance() {
+  public static com.hiveng.v1.AcceptProjectInvitationWithSignUpRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static volatile com.google.protobuf.Parser<SignUpRequest> PARSER;
+  private static volatile com.google.protobuf.Parser<AcceptProjectInvitationWithSignUpRequest> PARSER;
 
-  public static com.google.protobuf.Parser<SignUpRequest> parser() {
+  public static com.google.protobuf.Parser<AcceptProjectInvitationWithSignUpRequest> parser() {
     return DEFAULT_INSTANCE.getParserForType();
   }
 }

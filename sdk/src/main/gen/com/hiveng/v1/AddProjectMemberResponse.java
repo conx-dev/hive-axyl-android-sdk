@@ -20,21 +20,21 @@ public  final class AddProjectMemberResponse extends
   public static final int MEMBER_FIELD_NUMBER = 1;
   private com.hiveng.v1.ProjectMember member_;
   /**
-   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
    */
   @java.lang.Override
-  public boolean hasMember() {
+  @java.lang.Deprecated public boolean hasMember() {
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
-   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
    */
   @java.lang.Override
-  public com.hiveng.v1.ProjectMember getMember() {
+  @java.lang.Deprecated public com.hiveng.v1.ProjectMember getMember() {
     return member_ == null ? com.hiveng.v1.ProjectMember.getDefaultInstance() : member_;
   }
   /**
-   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
    */
   @java.lang.SuppressWarnings("ReturnValueIgnored")
   private void setMember(com.hiveng.v1.ProjectMember value) {
@@ -43,7 +43,7 @@ public  final class AddProjectMemberResponse extends
     bitField0_ |= 0x00000001;
   }
   /**
-   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
    */
   @java.lang.SuppressWarnings({"ReferenceEquality", "ReturnValueIgnored"})
   private void mergeMember(com.hiveng.v1.ProjectMember value) {
@@ -58,11 +58,59 @@ public  final class AddProjectMemberResponse extends
     bitField0_ |= 0x00000001;
   }
   /**
-   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
    */
   private void clearMember() {
     member_ = null;
     bitField0_ = (bitField0_ & ~0x00000001);
+  }
+
+  public static final int INVITATION_FIELD_NUMBER = 2;
+  private com.hiveng.v1.ProjectInvitation invitation_;
+  /**
+   * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+   */
+  @java.lang.Override
+  public boolean hasInvitation() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+   */
+  @java.lang.Override
+  public com.hiveng.v1.ProjectInvitation getInvitation() {
+    return invitation_ == null ? com.hiveng.v1.ProjectInvitation.getDefaultInstance() : invitation_;
+  }
+  /**
+   * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+   */
+  @java.lang.SuppressWarnings("ReturnValueIgnored")
+  private void setInvitation(com.hiveng.v1.ProjectInvitation value) {
+    value.getClass();  // minimal bytecode null check
+    invitation_ = value;
+    bitField0_ |= 0x00000002;
+  }
+  /**
+   * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+   */
+  @java.lang.SuppressWarnings({"ReferenceEquality", "ReturnValueIgnored"})
+  private void mergeInvitation(com.hiveng.v1.ProjectInvitation value) {
+    value.getClass();  // minimal bytecode null check
+    if (invitation_ != null &&
+        invitation_ != com.hiveng.v1.ProjectInvitation.getDefaultInstance()) {
+      invitation_ =
+        com.hiveng.v1.ProjectInvitation.newBuilder(invitation_).mergeFrom(value).buildPartial();
+    } else {
+      invitation_ = value;
+    }
+    bitField0_ |= 0x00000002;
+  }
+  /**
+   * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+   */
+  private void clearInvitation() {
+    invitation_ = null;
+    bitField0_ = (bitField0_ & ~0x00000002);
   }
 
   public static com.hiveng.v1.AddProjectMemberResponse parseFrom(
@@ -163,49 +211,96 @@ public  final class AddProjectMemberResponse extends
 
 
     /**
-     * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+     * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
      */
     @java.lang.Override
-    public boolean hasMember() {
+    @java.lang.Deprecated public boolean hasMember() {
       return instance.hasMember();
     }
     /**
-     * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+     * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
      */
     @java.lang.Override
-    public com.hiveng.v1.ProjectMember getMember() {
+    @java.lang.Deprecated public com.hiveng.v1.ProjectMember getMember() {
       return instance.getMember();
     }
     /**
-     * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+     * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
      */
-    public Builder setMember(com.hiveng.v1.ProjectMember value) {
+    @java.lang.Deprecated public Builder setMember(com.hiveng.v1.ProjectMember value) {
       copyOnWrite();
       instance.setMember(value);
       return this;
       }
     /**
-     * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+     * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
      */
-    public Builder setMember(
+    @java.lang.Deprecated public Builder setMember(
         com.hiveng.v1.ProjectMember.Builder builderForValue) {
       copyOnWrite();
       instance.setMember(builderForValue.build());
       return this;
     }
     /**
-     * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+     * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
      */
-    public Builder mergeMember(com.hiveng.v1.ProjectMember value) {
+    @java.lang.Deprecated public Builder mergeMember(com.hiveng.v1.ProjectMember value) {
       copyOnWrite();
       instance.mergeMember(value);
       return this;
     }
     /**
-     * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+     * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
      */
-    public Builder clearMember() {  copyOnWrite();
+    @java.lang.Deprecated public Builder clearMember() {  copyOnWrite();
       instance.clearMember();
+      return this;
+    }
+
+    /**
+     * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+     */
+    @java.lang.Override
+    public boolean hasInvitation() {
+      return instance.hasInvitation();
+    }
+    /**
+     * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+     */
+    @java.lang.Override
+    public com.hiveng.v1.ProjectInvitation getInvitation() {
+      return instance.getInvitation();
+    }
+    /**
+     * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+     */
+    public Builder setInvitation(com.hiveng.v1.ProjectInvitation value) {
+      copyOnWrite();
+      instance.setInvitation(value);
+      return this;
+      }
+    /**
+     * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+     */
+    public Builder setInvitation(
+        com.hiveng.v1.ProjectInvitation.Builder builderForValue) {
+      copyOnWrite();
+      instance.setInvitation(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+     */
+    public Builder mergeInvitation(com.hiveng.v1.ProjectInvitation value) {
+      copyOnWrite();
+      instance.mergeInvitation(value);
+      return this;
+    }
+    /**
+     * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+     */
+    public Builder clearInvitation() {  copyOnWrite();
+      instance.clearInvitation();
       return this;
     }
 
@@ -227,9 +322,11 @@ public  final class AddProjectMemberResponse extends
           java.lang.Object[] objects = new java.lang.Object[] {
             "bitField0_",
             "member_",
+            "invitation_",
           };
           java.lang.String info =
-              "\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0000\u0000\u0000\u0001\u1009\u0000";
+              "\u0000\u0002\u0000\u0001\u0001\u0002\u0002\u0000\u0000\u0000\u0001\u1009\u0000\u0002" +
+              "\u1009\u0001";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       case GET_DEFAULT_INSTANCE: {

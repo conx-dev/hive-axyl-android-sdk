@@ -54,6 +54,14 @@ public enum ErrorCode
    */
   ERROR_CODE_RATE_LIMITED(7),
   /**
+   * <code>ERROR_CODE_REQUEST_TOO_LARGE = 8;</code>
+   */
+  ERROR_CODE_REQUEST_TOO_LARGE(8),
+  /**
+   * <code>ERROR_CODE_REQUEST_TIMEOUT = 9;</code>
+   */
+  ERROR_CODE_REQUEST_TIMEOUT(9),
+  /**
    * <pre>
    * 게이트 / 접속 (100-199)
    * </pre>
@@ -170,6 +178,18 @@ public enum ErrorCode
    */
   ERROR_CODE_PROJECT_DELETED(505),
   /**
+   * <code>ERROR_CODE_ADMIN_EMAIL_VERIFICATION_REQUIRED = 506;</code>
+   */
+  ERROR_CODE_ADMIN_EMAIL_VERIFICATION_REQUIRED(506),
+  /**
+   * <code>ERROR_CODE_ADMIN_EMAIL_VERIFICATION_INVALID = 507;</code>
+   */
+  ERROR_CODE_ADMIN_EMAIL_VERIFICATION_INVALID(507),
+  /**
+   * <code>ERROR_CODE_PROJECT_INVITATION_INVALID = 508;</code>
+   */
+  ERROR_CODE_PROJECT_INVITATION_INVALID(508),
+  /**
    * <pre>
    * 우편함 (600-699)
    * </pre>
@@ -224,6 +244,14 @@ public enum ErrorCode
    * <code>ERROR_CODE_RATE_LIMITED = 7;</code>
    */
   public static final int ERROR_CODE_RATE_LIMITED_VALUE = 7;
+  /**
+   * <code>ERROR_CODE_REQUEST_TOO_LARGE = 8;</code>
+   */
+  public static final int ERROR_CODE_REQUEST_TOO_LARGE_VALUE = 8;
+  /**
+   * <code>ERROR_CODE_REQUEST_TIMEOUT = 9;</code>
+   */
+  public static final int ERROR_CODE_REQUEST_TIMEOUT_VALUE = 9;
   /**
    * <pre>
    * 게이트 / 접속 (100-199)
@@ -341,6 +369,18 @@ public enum ErrorCode
    */
   public static final int ERROR_CODE_PROJECT_DELETED_VALUE = 505;
   /**
+   * <code>ERROR_CODE_ADMIN_EMAIL_VERIFICATION_REQUIRED = 506;</code>
+   */
+  public static final int ERROR_CODE_ADMIN_EMAIL_VERIFICATION_REQUIRED_VALUE = 506;
+  /**
+   * <code>ERROR_CODE_ADMIN_EMAIL_VERIFICATION_INVALID = 507;</code>
+   */
+  public static final int ERROR_CODE_ADMIN_EMAIL_VERIFICATION_INVALID_VALUE = 507;
+  /**
+   * <code>ERROR_CODE_PROJECT_INVITATION_INVALID = 508;</code>
+   */
+  public static final int ERROR_CODE_PROJECT_INVITATION_INVALID_VALUE = 508;
+  /**
    * <pre>
    * 우편함 (600-699)
    * </pre>
@@ -386,6 +426,8 @@ public enum ErrorCode
       case 5: return ERROR_CODE_PERMISSION_DENIED;
       case 6: return ERROR_CODE_UNAUTHENTICATED;
       case 7: return ERROR_CODE_RATE_LIMITED;
+      case 8: return ERROR_CODE_REQUEST_TOO_LARGE;
+      case 9: return ERROR_CODE_REQUEST_TIMEOUT;
       case 100: return ERROR_CODE_MAINTENANCE_IN_PROGRESS;
       case 101: return ERROR_CODE_GEO_BLOCKED;
       case 102: return ERROR_CODE_CLIENT_VERSION_UNSUPPORTED;
@@ -409,6 +451,9 @@ public enum ErrorCode
       case 503: return ERROR_CODE_PROJECT_NOT_LIVE;
       case 504: return ERROR_CODE_PROJECT_SUSPENDED;
       case 505: return ERROR_CODE_PROJECT_DELETED;
+      case 506: return ERROR_CODE_ADMIN_EMAIL_VERIFICATION_REQUIRED;
+      case 507: return ERROR_CODE_ADMIN_EMAIL_VERIFICATION_INVALID;
+      case 508: return ERROR_CODE_PROJECT_INVITATION_INVALID;
       case 600: return ERROR_CODE_MAIL_NOT_FOUND;
       case 601: return ERROR_CODE_MAIL_ALREADY_CLAIMED;
       case 602: return ERROR_CODE_MAIL_NOT_CLAIMABLE;

@@ -28,7 +28,7 @@ Add the SDK dependency to your app module:
 
 ```kotlin
 dependencies {
-    implementation("io.github.conx-dev:hive-axyl-android-sdk:0.1.0")
+    implementation("io.github.conx-dev:hive-axyl-android-sdk:0.2.0")
 }
 ```
 
@@ -101,7 +101,7 @@ Supported auth entry points:
 - `hive.auth.logout()`
 - `hive.auth.currentPlayer()`
 
-OAuth tokens are obtained by your app through the platform provider SDKs. Hive Axyl SDK sends those tokens to the Hive Axyl server for validation.
+Google and Facebook tokens are obtained by your app through their provider SDKs. For Apple, open the URL returned by `startAppleLogin`, then pass the callback `Uri` unchanged to `completeAppleLogin`. Provide `context` in `HiveAxylConfig` so the pending Apple login survives app process recreation.
 
 On the first guest login, the SDK creates a cryptographically random installation credential in `SharedPreferences`. It is stored separately from session tokens, remains after `logout()`, and is unaffected by `persistSession`. Identity-provider login neither creates nor uses it. Guest login fails before sending a request when durable storage is unavailable. Clearing app storage can create a new guest account, and the previous guest account may not be recoverable.
 

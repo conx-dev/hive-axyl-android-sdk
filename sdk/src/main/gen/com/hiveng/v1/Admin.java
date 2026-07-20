@@ -216,6 +216,54 @@ public  final class Admin extends
     bitField0_ = (bitField0_ & ~0x00000001);
   }
 
+  public static final int EMAIL_VERIFIED_AT_FIELD_NUMBER = 5;
+  private com.google.protobuf.Timestamp emailVerifiedAt_;
+  /**
+   * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+   */
+  @java.lang.Override
+  public boolean hasEmailVerifiedAt() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+   */
+  @java.lang.Override
+  public com.google.protobuf.Timestamp getEmailVerifiedAt() {
+    return emailVerifiedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : emailVerifiedAt_;
+  }
+  /**
+   * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+   */
+  @java.lang.SuppressWarnings("ReturnValueIgnored")
+  private void setEmailVerifiedAt(com.google.protobuf.Timestamp value) {
+    value.getClass();  // minimal bytecode null check
+    emailVerifiedAt_ = value;
+    bitField0_ |= 0x00000002;
+  }
+  /**
+   * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+   */
+  @java.lang.SuppressWarnings({"ReferenceEquality", "ReturnValueIgnored"})
+  private void mergeEmailVerifiedAt(com.google.protobuf.Timestamp value) {
+    value.getClass();  // minimal bytecode null check
+    if (emailVerifiedAt_ != null &&
+        emailVerifiedAt_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+      emailVerifiedAt_ =
+        com.google.protobuf.Timestamp.newBuilder(emailVerifiedAt_).mergeFrom(value).buildPartial();
+    } else {
+      emailVerifiedAt_ = value;
+    }
+    bitField0_ |= 0x00000002;
+  }
+  /**
+   * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+   */
+  private void clearEmailVerifiedAt() {
+    emailVerifiedAt_ = null;
+    bitField0_ = (bitField0_ & ~0x00000002);
+  }
+
   public static com.hiveng.v1.Admin parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -511,6 +559,53 @@ public  final class Admin extends
       return this;
     }
 
+    /**
+     * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+     */
+    @java.lang.Override
+    public boolean hasEmailVerifiedAt() {
+      return instance.hasEmailVerifiedAt();
+    }
+    /**
+     * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getEmailVerifiedAt() {
+      return instance.getEmailVerifiedAt();
+    }
+    /**
+     * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+     */
+    public Builder setEmailVerifiedAt(com.google.protobuf.Timestamp value) {
+      copyOnWrite();
+      instance.setEmailVerifiedAt(value);
+      return this;
+      }
+    /**
+     * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+     */
+    public Builder setEmailVerifiedAt(
+        com.google.protobuf.Timestamp.Builder builderForValue) {
+      copyOnWrite();
+      instance.setEmailVerifiedAt(builderForValue.build());
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+     */
+    public Builder mergeEmailVerifiedAt(com.google.protobuf.Timestamp value) {
+      copyOnWrite();
+      instance.mergeEmailVerifiedAt(value);
+      return this;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+     */
+    public Builder clearEmailVerifiedAt() {  copyOnWrite();
+      instance.clearEmailVerifiedAt();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:hiveng.v1.Admin)
   }
   @java.lang.Override
@@ -532,10 +627,11 @@ public  final class Admin extends
             "email_",
             "name_",
             "createdAt_",
+            "emailVerifiedAt_",
           };
           java.lang.String info =
-              "\u0000\u0004\u0000\u0001\u0001\u0004\u0004\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
-              "\u0003\u0208\u0004\u1009\u0000";
+              "\u0000\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+              "\u0003\u0208\u0004\u1009\u0000\u0005\u1009\u0001";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       case GET_DEFAULT_INSTANCE: {

@@ -11,13 +11,28 @@ public interface AddProjectMemberResponseOrBuilder extends
     com.google.protobuf.MessageLiteOrBuilder {
 
   /**
-   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
+   * @deprecated hiveng.v1.AddProjectMemberResponse.member is deprecated.
+   *     See hiveng/v1/admin.proto;l=225
    * @return Whether the member field is set.
    */
-  boolean hasMember();
+  @java.lang.Deprecated boolean hasMember();
   /**
-   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member"];</code>
+   * <code>.hiveng.v1.ProjectMember member = 1 [json_name = "member", deprecated = true];</code>
+   * @deprecated hiveng.v1.AddProjectMemberResponse.member is deprecated.
+   *     See hiveng/v1/admin.proto;l=225
    * @return The member.
    */
-  com.hiveng.v1.ProjectMember getMember();
+  @java.lang.Deprecated com.hiveng.v1.ProjectMember getMember();
+
+  /**
+   * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+   * @return Whether the invitation field is set.
+   */
+  boolean hasInvitation();
+  /**
+   * <code>.hiveng.v1.ProjectInvitation invitation = 2 [json_name = "invitation"];</code>
+   * @return The invitation.
+   */
+  com.hiveng.v1.ProjectInvitation getInvitation();
 }

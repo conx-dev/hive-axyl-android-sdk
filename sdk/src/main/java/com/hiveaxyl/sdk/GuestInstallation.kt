@@ -40,7 +40,7 @@ internal class GuestInstallation(private val storage: GuestInstallationStorage?)
                 }
                 val bytes = ByteArray(RANDOM_BYTES)
                 SecureRandom().nextBytes(bytes)
-                val encoded = encodeBase64Url(bytes)
+                val encoded = Base64Url.encode(bytes)
                 val credential = PREFIX + encoded
                 if (!target.set(credential) || target.get() != credential) {
                     throw unavailable()
@@ -61,38 +61,9 @@ internal class GuestInstallation(private val storage: GuestInstallationStorage?)
         )
     }
 
-    private fun encodeBase64Url(bytes: ByteArray): String {
-        val encoded = StringBuilder(43)
-        var index = 0
-        while (index < bytes.size) {
-            val first = byteValue(bytes, index)
-            val second = byteValue(bytes, index + 1)
-            val third = byteValue(bytes, index + 2)
-            val value = (first shl 16) or (second shl 8) or third
-            encoded.append(BASE64_URL[(value shr 18) and 63])
-            encoded.append(BASE64_URL[(value shr 12) and 63])
-            if (index + 1 < bytes.size) {
-                encoded.append(BASE64_URL[(value shr 6) and 63])
-            }
-            if (index + 2 < bytes.size) {
-                encoded.append(BASE64_URL[value and 63])
-            }
-            index += 3
-        }
-        return encoded.toString()
-    }
-
-    private fun byteValue(bytes: ByteArray, index: Int): Int {
-        if (index >= bytes.size) {
-            return 0
-        }
-        return bytes[index].toInt() and 0xff
-    }
-
     private companion object {
         const val PREFIX = "g1_"
         const val RANDOM_BYTES = 32
-        const val BASE64_URL = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
         val CREDENTIAL_PATTERN = Regex("^g1_[A-Za-z0-9_-]{43}$")
     }
 }

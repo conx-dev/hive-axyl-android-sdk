@@ -2,6 +2,8 @@ package com.hiveaxyl.sdk
 
 import android.net.Uri
 import com.hiveng.v1.ClientPlatform
+import com.hiveng.v1.CompleteAppleLoginRequest
+import com.hiveng.v1.CompleteAppleLoginResponse
 import com.hiveng.v1.GetLoginProvidersRequest
 import com.hiveng.v1.GetLoginProvidersResponse
 import com.hiveng.v1.GetPlayerRequest
@@ -11,10 +13,8 @@ import com.hiveng.v1.LoginWithProviderRequest
 import com.hiveng.v1.LoginWithProviderResponse
 import com.hiveng.v1.LogoutRequest
 import com.hiveng.v1.LogoutResponse
-import org.json.JSONObject
-import java.text.SimpleDateFormat
-import java.util.Locale
-import java.util.TimeZone
+import com.hiveng.v1.StartAppleLoginRequest
+import com.hiveng.v1.StartAppleLoginResponse
 import java.util.concurrent.ExecutorService
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -23,7 +23,8 @@ import kotlin.coroutines.suspendCoroutine
 class AuthApi internal constructor(
     private val session: Session,
     private val executor: ExecutorService,
-    private val guestInstallation: GuestInstallation
+    private val guestInstallation: GuestInstallation,
+    private val appleLoginPendingStore: AppleLoginPendingStore
 ) {
     private val lock = Object()
     private var client: ConnectClient? = null
@@ -105,14 +106,28 @@ class AuthApi internal constructor(
         }
 
         runAsync(callback) {
-            val body = JSONObject()
-                .put("clientId", clientId)
-                .put("returnUrl", returnUrl)
-                .put("platform", "android")
-                .toString()
-            val response = JSONObject(requireClient().postJson("/oauth/apple/start", body))
-            val authorizationUrl = response.optString("authorizationUrl")
+            val verifier = ApplePkce.createVerifier()
+            val request = StartAppleLoginRequest.newBuilder()
+                .setClientId(clientId)
+                .setReturnUrl(returnUrl)
+                .setPlatform(ClientPlatform.CLIENT_PLATFORM_ANDROID)
+                .setCodeChallenge(ApplePkce.createChallenge(verifier))
+                .build()
+            appleLoginPendingStore.save(verifier)
+            val response = try {
+                requireClient().unary(
+                    "AuthService",
+                    "StartAppleLogin",
+                    request,
+                    StartAppleLoginResponse.parser()
+                )
+            } catch (error: Throwable) {
+                appleLoginPendingStore.clear(verifier)
+                throw error
+            }
+            val authorizationUrl = response.authorizationUrl
             if (authorizationUrl.isEmpty()) {
+                appleLoginPendingStore.clear(verifier)
                 throw HiveAxylException.transport("apple authorizationUrl missing")
             }
             authorizationUrl
@@ -131,21 +146,36 @@ class AuthApi internal constructor(
             if (status == "error") {
                 val code = uri.getQueryParameter("error_code").orEmpty()
                 val message = uri.getQueryParameter("error_message").orEmpty()
+                appleLoginPendingStore.clear()
                 throw HiveAxylException.transport(appleCallbackErrorMessage(code, message))
             }
             if (status != "ok") {
                 throw HiveAxylException.invalidArgument("apple login callback is invalid")
             }
-            val accessToken = uri.getQueryParameter("access_token").orEmpty()
-            val refreshToken = uri.getQueryParameter("refresh_token").orEmpty()
-            val playerValidationToken = uri.getQueryParameter("player_validation_token").orEmpty()
-            val playerValidationTokenExpiresAt =
-                parseRfc3339Millis(uri.getQueryParameter("player_validation_token_expires_at").orEmpty())
-            if (accessToken.isEmpty() || refreshToken.isEmpty()) {
-                throw HiveAxylException.transport("apple login response missing token pair")
+            val authorizationCode = uri.getQueryParameter("code").orEmpty()
+            if (authorizationCode.isEmpty()) {
+                throw HiveAxylException.transport("apple login response missing authorization code")
             }
-            session.save(accessToken, refreshToken, playerValidationToken, playerValidationTokenExpiresAt)
-            fetchCurrentPlayer()
+            val verifier = appleLoginPendingStore.load()
+                ?: throw HiveAxylException.invalidArgument("apple login session is missing or expired")
+            val request = CompleteAppleLoginRequest.newBuilder()
+                .setAuthorizationCode(authorizationCode)
+                .setCodeVerifier(verifier)
+                .build()
+            val response = requireClient().unary(
+                "AuthService",
+                "CompleteAppleLogin",
+                request,
+                CompleteAppleLoginResponse.parser()
+            )
+            if (!response.hasPlayer() || !response.hasTokenPair()) {
+                throw HiveAxylException.transport("apple login response missing player or token pair")
+            }
+            session.save(response.tokenPair)
+            val logged = response.player.toSdkPlayer()
+            setPlayer(logged)
+            appleLoginPendingStore.clear(verifier)
+            logged
         }
     }
 
@@ -265,12 +295,6 @@ class AuthApi internal constructor(
         return logged
     }
 
-    private fun fetchCurrentPlayer(): Player {
-        val restored = fetchNullablePlayer()
-            ?: throw HiveAxylException.transport("apple login response missing player")
-        return restored
-    }
-
     private fun fetchNullablePlayer(): Player? {
         val response = requireClient().unary(
             "AuthService",
@@ -304,33 +328,6 @@ class AuthApi internal constructor(
             return "Apple login failed"
         }
         return values.joinToString(": ")
-    }
-
-    private fun parseRfc3339Millis(value: String): Long? {
-        if (value.isEmpty()) {
-            return null
-        }
-        val normalized = normalizeRfc3339Millis(value)
-        val patterns = listOf("yyyy-MM-dd'T'HH:mm:ss.SSSX", "yyyy-MM-dd'T'HH:mm:ssX")
-        for (pattern in patterns) {
-            try {
-                val format = SimpleDateFormat(pattern, Locale.US)
-                format.timeZone = TimeZone.getTimeZone("UTC")
-                return format.parse(normalized)?.time
-            } catch (_: Exception) {
-            }
-        }
-        return null
-    }
-
-    private fun normalizeRfc3339Millis(value: String): String {
-        val dot = value.indexOf('.')
-        if (dot < 0 || !value.endsWith("Z")) {
-            return value
-        }
-        val prefix = value.substring(0, dot)
-        val fraction = value.substring(dot + 1, value.length - 1).padEnd(3, '0').take(3)
-        return "$prefix.$fraction" + "Z"
     }
 
     private fun <T> runAsync(callback: HiveAxylCallback<T>, block: () -> T) {

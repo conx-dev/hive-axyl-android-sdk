@@ -18,13 +18,14 @@ class HiveAxyl private constructor(config: HiveAxylConfig) {
     private val resolvedConfig = ResolvedConfig.from(config)
     private val session = Session(resolveStorage(config))
     private val guestInstallation = GuestInstallation(resolveGuestInstallationStorage(config))
+    private val appleLoginPendingStore = resolveAppleLoginPendingStore(config)
     private val httpClient = config.httpClient
     private val executor = config.executor
     private val lock = Object()
     private var ready = false
 
     init {
-        auth = AuthApi(session, executor, guestInstallation)
+        auth = AuthApi(session, executor, guestInstallation, appleLoginPendingStore)
         notice = NoticeApi(executor)
         mailbox = MailboxApi(executor)
         payment = PaymentApi(executor)
@@ -189,6 +190,11 @@ class HiveAxyl private constructor(config: HiveAxylConfig) {
     private fun resolveGuestInstallationStorage(config: HiveAxylConfig): GuestInstallationStorage? {
         val context = config.context ?: return null
         return SharedPreferencesGuestInstallationStorage(context)
+    }
+
+    private fun resolveAppleLoginPendingStore(config: HiveAxylConfig): AppleLoginPendingStore {
+        val context = config.context ?: return InMemoryAppleLoginPendingStore()
+        return SharedPreferencesAppleLoginPendingStore(context)
     }
 
     private fun kotlin.coroutines.Continuation<Unit>.asCallback(): HiveAxylCallback<Unit> {

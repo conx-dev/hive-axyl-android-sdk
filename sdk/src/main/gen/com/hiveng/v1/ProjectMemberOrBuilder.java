@@ -67,4 +67,10 @@ public interface ProjectMemberOrBuilder extends
    * @return The addedAt.
    */
   com.google.protobuf.Timestamp getAddedAt();
+
+  /**
+   * <code>bool email_verified = 6 [json_name = "emailVerified"];</code>
+   * @return The emailVerified.
+   */
+  boolean getEmailVerified();
 }

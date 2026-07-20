@@ -56,4 +56,15 @@ public interface AdminOrBuilder extends
    * @return The createdAt.
    */
   com.google.protobuf.Timestamp getCreatedAt();
+
+  /**
+   * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+   * @return Whether the emailVerifiedAt field is set.
+   */
+  boolean hasEmailVerifiedAt();
+  /**
+   * <code>.google.protobuf.Timestamp email_verified_at = 5 [json_name = "emailVerifiedAt"];</code>
+   * @return The emailVerifiedAt.
+   */
+  com.google.protobuf.Timestamp getEmailVerifiedAt();
 }

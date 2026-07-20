@@ -259,6 +259,32 @@ public  final class ProjectMember extends
     bitField0_ = (bitField0_ & ~0x00000001);
   }
 
+  public static final int EMAIL_VERIFIED_FIELD_NUMBER = 6;
+  private boolean emailVerified_;
+  /**
+   * <code>bool email_verified = 6 [json_name = "emailVerified"];</code>
+   * @return The emailVerified.
+   */
+  @java.lang.Override
+  public boolean getEmailVerified() {
+    return emailVerified_;
+  }
+  /**
+   * <code>bool email_verified = 6 [json_name = "emailVerified"];</code>
+   * @param value The emailVerified to set.
+   */
+  private void setEmailVerified(boolean value) {
+    
+    emailVerified_ = value;
+  }
+  /**
+   * <code>bool email_verified = 6 [json_name = "emailVerified"];</code>
+   */
+  private void clearEmailVerified() {
+
+    emailVerified_ = false;
+  }
+
   public static com.hiveng.v1.ProjectMember parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -601,6 +627,34 @@ public  final class ProjectMember extends
       return this;
     }
 
+    /**
+     * <code>bool email_verified = 6 [json_name = "emailVerified"];</code>
+     * @return The emailVerified.
+     */
+    @java.lang.Override
+    public boolean getEmailVerified() {
+      return instance.getEmailVerified();
+    }
+    /**
+     * <code>bool email_verified = 6 [json_name = "emailVerified"];</code>
+     * @param value The emailVerified to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEmailVerified(boolean value) {
+      copyOnWrite();
+      instance.setEmailVerified(value);
+      return this;
+    }
+    /**
+     * <code>bool email_verified = 6 [json_name = "emailVerified"];</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEmailVerified() {
+      copyOnWrite();
+      instance.clearEmailVerified();
+      return this;
+    }
+
     // @@protoc_insertion_point(builder_scope:hiveng.v1.ProjectMember)
   }
   @java.lang.Override
@@ -623,10 +677,11 @@ public  final class ProjectMember extends
             "name_",
             "role_",
             "addedAt_",
+            "emailVerified_",
           };
           java.lang.String info =
-              "\u0000\u0005\u0000\u0001\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
-              "\u0003\u0208\u0004\f\u0005\u1009\u0000";
+              "\u0000\u0006\u0000\u0001\u0001\u0006\u0006\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+              "\u0003\u0208\u0004\f\u0005\u1009\u0000\u0006\u0007";
           return newMessageInfo(DEFAULT_INSTANCE, info, objects);
       }
       case GET_DEFAULT_INSTANCE: {

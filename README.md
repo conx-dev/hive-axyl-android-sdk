@@ -138,6 +138,14 @@ try {
 
 The SDK publishes consumer R8 rules with the AAR. Apps normally do not need additional keep rules for Hive Axyl SDK classes.
 
+## Build and Test
+
+The repository pins Gradle 8.13 and the Gradle Daemon to Java 17. Use the included Gradle Wrapper:
+
+```bash
+./gradlew :sdk:testReleaseUnitTest
+```
+
 ## Release Policy
 
 Use a fixed SDK version in production builds. Maven Central artifacts are immutable, so fixes are released as new versions.

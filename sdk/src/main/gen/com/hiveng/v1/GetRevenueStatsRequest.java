@@ -71,7 +71,7 @@ public  final class GetRevenueStatsRequest extends
   private java.lang.String fromDate_;
   /**
    * <pre>
-   * "YYYY-MM-DD" (UTC, 포함)
+   * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
    * </pre>
    *
    * <code>string from_date = 2 [json_name = "fromDate"];</code>
@@ -83,7 +83,7 @@ public  final class GetRevenueStatsRequest extends
   }
   /**
    * <pre>
-   * "YYYY-MM-DD" (UTC, 포함)
+   * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
    * </pre>
    *
    * <code>string from_date = 2 [json_name = "fromDate"];</code>
@@ -96,7 +96,7 @@ public  final class GetRevenueStatsRequest extends
   }
   /**
    * <pre>
-   * "YYYY-MM-DD" (UTC, 포함)
+   * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
    * </pre>
    *
    * <code>string from_date = 2 [json_name = "fromDate"];</code>
@@ -111,7 +111,7 @@ public  final class GetRevenueStatsRequest extends
   }
   /**
    * <pre>
-   * "YYYY-MM-DD" (UTC, 포함)
+   * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
    * </pre>
    *
    * <code>string from_date = 2 [json_name = "fromDate"];</code>
@@ -122,7 +122,7 @@ public  final class GetRevenueStatsRequest extends
   }
   /**
    * <pre>
-   * "YYYY-MM-DD" (UTC, 포함)
+   * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
    * </pre>
    *
    * <code>string from_date = 2 [json_name = "fromDate"];</code>
@@ -139,7 +139,7 @@ public  final class GetRevenueStatsRequest extends
   private java.lang.String toDate_;
   /**
    * <pre>
-   * "YYYY-MM-DD" (UTC, 포함)
+   * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
    * </pre>
    *
    * <code>string to_date = 3 [json_name = "toDate"];</code>
@@ -151,7 +151,7 @@ public  final class GetRevenueStatsRequest extends
   }
   /**
    * <pre>
-   * "YYYY-MM-DD" (UTC, 포함)
+   * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
    * </pre>
    *
    * <code>string to_date = 3 [json_name = "toDate"];</code>
@@ -164,7 +164,7 @@ public  final class GetRevenueStatsRequest extends
   }
   /**
    * <pre>
-   * "YYYY-MM-DD" (UTC, 포함)
+   * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
    * </pre>
    *
    * <code>string to_date = 3 [json_name = "toDate"];</code>
@@ -179,7 +179,7 @@ public  final class GetRevenueStatsRequest extends
   }
   /**
    * <pre>
-   * "YYYY-MM-DD" (UTC, 포함)
+   * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
    * </pre>
    *
    * <code>string to_date = 3 [json_name = "toDate"];</code>
@@ -190,7 +190,7 @@ public  final class GetRevenueStatsRequest extends
   }
   /**
    * <pre>
-   * "YYYY-MM-DD" (UTC, 포함)
+   * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
    * </pre>
    *
    * <code>string to_date = 3 [json_name = "toDate"];</code>
@@ -394,7 +394,7 @@ public  final class GetRevenueStatsRequest extends
 
     /**
      * <pre>
-     * "YYYY-MM-DD" (UTC, 포함)
+     * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
      * </pre>
      *
      * <code>string from_date = 2 [json_name = "fromDate"];</code>
@@ -406,7 +406,7 @@ public  final class GetRevenueStatsRequest extends
     }
     /**
      * <pre>
-     * "YYYY-MM-DD" (UTC, 포함)
+     * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
      * </pre>
      *
      * <code>string from_date = 2 [json_name = "fromDate"];</code>
@@ -419,7 +419,7 @@ public  final class GetRevenueStatsRequest extends
     }
     /**
      * <pre>
-     * "YYYY-MM-DD" (UTC, 포함)
+     * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
      * </pre>
      *
      * <code>string from_date = 2 [json_name = "fromDate"];</code>
@@ -434,7 +434,7 @@ public  final class GetRevenueStatsRequest extends
     }
     /**
      * <pre>
-     * "YYYY-MM-DD" (UTC, 포함)
+     * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
      * </pre>
      *
      * <code>string from_date = 2 [json_name = "fromDate"];</code>
@@ -447,7 +447,7 @@ public  final class GetRevenueStatsRequest extends
     }
     /**
      * <pre>
-     * "YYYY-MM-DD" (UTC, 포함)
+     * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
      * </pre>
      *
      * <code>string from_date = 2 [json_name = "fromDate"];</code>
@@ -463,7 +463,7 @@ public  final class GetRevenueStatsRequest extends
 
     /**
      * <pre>
-     * "YYYY-MM-DD" (UTC, 포함)
+     * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
      * </pre>
      *
      * <code>string to_date = 3 [json_name = "toDate"];</code>
@@ -475,7 +475,7 @@ public  final class GetRevenueStatsRequest extends
     }
     /**
      * <pre>
-     * "YYYY-MM-DD" (UTC, 포함)
+     * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
      * </pre>
      *
      * <code>string to_date = 3 [json_name = "toDate"];</code>
@@ -488,7 +488,7 @@ public  final class GetRevenueStatsRequest extends
     }
     /**
      * <pre>
-     * "YYYY-MM-DD" (UTC, 포함)
+     * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
      * </pre>
      *
      * <code>string to_date = 3 [json_name = "toDate"];</code>
@@ -503,7 +503,7 @@ public  final class GetRevenueStatsRequest extends
     }
     /**
      * <pre>
-     * "YYYY-MM-DD" (UTC, 포함)
+     * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
      * </pre>
      *
      * <code>string to_date = 3 [json_name = "toDate"];</code>
@@ -516,7 +516,7 @@ public  final class GetRevenueStatsRequest extends
     }
     /**
      * <pre>
-     * "YYYY-MM-DD" (UTC, 포함)
+     * "YYYY-MM-DD" (UTC, 포함). from_date와 to_date는 같은 달이어야 한다.
      * </pre>
      *
      * <code>string to_date = 3 [json_name = "toDate"];</code>

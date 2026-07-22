@@ -74,6 +74,10 @@ public  final class GetRetentionStatsRequest extends
   public static final int FROM_DATE_FIELD_NUMBER = 2;
   private java.lang.String fromDate_;
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). to_date까지 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string from_date = 2 [json_name = "fromDate"];</code>
    * @return The fromDate.
    */
@@ -82,6 +86,10 @@ public  final class GetRetentionStatsRequest extends
     return fromDate_;
   }
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). to_date까지 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string from_date = 2 [json_name = "fromDate"];</code>
    * @return The bytes for fromDate.
    */
@@ -91,6 +99,10 @@ public  final class GetRetentionStatsRequest extends
     return com.google.protobuf.ByteString.copyFromUtf8(fromDate_);
   }
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). to_date까지 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string from_date = 2 [json_name = "fromDate"];</code>
    * @param value The fromDate to set.
    */
@@ -102,6 +114,10 @@ public  final class GetRetentionStatsRequest extends
     fromDate_ = value;
   }
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). to_date까지 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string from_date = 2 [json_name = "fromDate"];</code>
    */
   private void clearFromDate() {
@@ -109,6 +125,10 @@ public  final class GetRetentionStatsRequest extends
     fromDate_ = getDefaultInstance().getFromDate();
   }
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). to_date까지 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string from_date = 2 [json_name = "fromDate"];</code>
    * @param value The bytes for fromDate to set.
    */
@@ -122,6 +142,10 @@ public  final class GetRetentionStatsRequest extends
   public static final int TO_DATE_FIELD_NUMBER = 3;
   private java.lang.String toDate_;
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). from_date부터 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string to_date = 3 [json_name = "toDate"];</code>
    * @return The toDate.
    */
@@ -130,6 +154,10 @@ public  final class GetRetentionStatsRequest extends
     return toDate_;
   }
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). from_date부터 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string to_date = 3 [json_name = "toDate"];</code>
    * @return The bytes for toDate.
    */
@@ -139,6 +167,10 @@ public  final class GetRetentionStatsRequest extends
     return com.google.protobuf.ByteString.copyFromUtf8(toDate_);
   }
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). from_date부터 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string to_date = 3 [json_name = "toDate"];</code>
    * @param value The toDate to set.
    */
@@ -150,6 +182,10 @@ public  final class GetRetentionStatsRequest extends
     toDate_ = value;
   }
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). from_date부터 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string to_date = 3 [json_name = "toDate"];</code>
    */
   private void clearToDate() {
@@ -157,6 +193,10 @@ public  final class GetRetentionStatsRequest extends
     toDate_ = getDefaultInstance().getToDate();
   }
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). from_date부터 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string to_date = 3 [json_name = "toDate"];</code>
    * @param value The bytes for toDate to set.
    */
@@ -170,6 +210,10 @@ public  final class GetRetentionStatsRequest extends
   public static final int RETENTION_DAYS_FIELD_NUMBER = 4;
   private com.google.protobuf.Internal.IntList retentionDays_;
   /**
+   * <pre>
+   * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+   * </pre>
+   *
    * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
    * @return A list containing the retentionDays.
    */
@@ -179,6 +223,10 @@ public  final class GetRetentionStatsRequest extends
     return retentionDays_;
   }
   /**
+   * <pre>
+   * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+   * </pre>
+   *
    * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
    * @return The count of retentionDays.
    */
@@ -187,6 +235,10 @@ public  final class GetRetentionStatsRequest extends
     return retentionDays_.size();
   }
   /**
+   * <pre>
+   * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+   * </pre>
+   *
    * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
    * @param index The index of the element to return.
    * @return The retentionDays at the given index.
@@ -204,6 +256,10 @@ public  final class GetRetentionStatsRequest extends
      }
   }
   /**
+   * <pre>
+   * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+   * </pre>
+   *
    * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
    * @param index The index to set the value at.
    * @param value The retentionDays to set.
@@ -214,6 +270,10 @@ public  final class GetRetentionStatsRequest extends
     retentionDays_.setInt(index, value);
   }
   /**
+   * <pre>
+   * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+   * </pre>
+   *
    * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
    * @param value The retentionDays to add.
    */
@@ -222,6 +282,10 @@ public  final class GetRetentionStatsRequest extends
     retentionDays_.addInt(value);
   }
   /**
+   * <pre>
+   * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+   * </pre>
+   *
    * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
    * @param values The retentionDays to add.
    */
@@ -232,6 +296,10 @@ public  final class GetRetentionStatsRequest extends
         values, retentionDays_);
   }
   /**
+   * <pre>
+   * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+   * </pre>
+   *
    * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
    */
   private void clearRetentionDays() {
@@ -793,6 +861,10 @@ public  final class GetRetentionStatsRequest extends
     }
 
     /**
+     * <pre>
+     * "YYYY-MM-DD" (UTC, 포함). to_date까지 정확히 8개 날짜여야 한다.
+     * </pre>
+     *
      * <code>string from_date = 2 [json_name = "fromDate"];</code>
      * @return The fromDate.
      */
@@ -801,6 +873,10 @@ public  final class GetRetentionStatsRequest extends
       return instance.getFromDate();
     }
     /**
+     * <pre>
+     * "YYYY-MM-DD" (UTC, 포함). to_date까지 정확히 8개 날짜여야 한다.
+     * </pre>
+     *
      * <code>string from_date = 2 [json_name = "fromDate"];</code>
      * @return The bytes for fromDate.
      */
@@ -810,6 +886,10 @@ public  final class GetRetentionStatsRequest extends
       return instance.getFromDateBytes();
     }
     /**
+     * <pre>
+     * "YYYY-MM-DD" (UTC, 포함). to_date까지 정확히 8개 날짜여야 한다.
+     * </pre>
+     *
      * <code>string from_date = 2 [json_name = "fromDate"];</code>
      * @param value The fromDate to set.
      * @return This builder for chaining.
@@ -821,6 +901,10 @@ public  final class GetRetentionStatsRequest extends
       return this;
     }
     /**
+     * <pre>
+     * "YYYY-MM-DD" (UTC, 포함). to_date까지 정확히 8개 날짜여야 한다.
+     * </pre>
+     *
      * <code>string from_date = 2 [json_name = "fromDate"];</code>
      * @return This builder for chaining.
      */
@@ -830,6 +914,10 @@ public  final class GetRetentionStatsRequest extends
       return this;
     }
     /**
+     * <pre>
+     * "YYYY-MM-DD" (UTC, 포함). to_date까지 정확히 8개 날짜여야 한다.
+     * </pre>
+     *
      * <code>string from_date = 2 [json_name = "fromDate"];</code>
      * @param value The bytes for fromDate to set.
      * @return This builder for chaining.
@@ -842,6 +930,10 @@ public  final class GetRetentionStatsRequest extends
     }
 
     /**
+     * <pre>
+     * "YYYY-MM-DD" (UTC, 포함). from_date부터 정확히 8개 날짜여야 한다.
+     * </pre>
+     *
      * <code>string to_date = 3 [json_name = "toDate"];</code>
      * @return The toDate.
      */
@@ -850,6 +942,10 @@ public  final class GetRetentionStatsRequest extends
       return instance.getToDate();
     }
     /**
+     * <pre>
+     * "YYYY-MM-DD" (UTC, 포함). from_date부터 정확히 8개 날짜여야 한다.
+     * </pre>
+     *
      * <code>string to_date = 3 [json_name = "toDate"];</code>
      * @return The bytes for toDate.
      */
@@ -859,6 +955,10 @@ public  final class GetRetentionStatsRequest extends
       return instance.getToDateBytes();
     }
     /**
+     * <pre>
+     * "YYYY-MM-DD" (UTC, 포함). from_date부터 정확히 8개 날짜여야 한다.
+     * </pre>
+     *
      * <code>string to_date = 3 [json_name = "toDate"];</code>
      * @param value The toDate to set.
      * @return This builder for chaining.
@@ -870,6 +970,10 @@ public  final class GetRetentionStatsRequest extends
       return this;
     }
     /**
+     * <pre>
+     * "YYYY-MM-DD" (UTC, 포함). from_date부터 정확히 8개 날짜여야 한다.
+     * </pre>
+     *
      * <code>string to_date = 3 [json_name = "toDate"];</code>
      * @return This builder for chaining.
      */
@@ -879,6 +983,10 @@ public  final class GetRetentionStatsRequest extends
       return this;
     }
     /**
+     * <pre>
+     * "YYYY-MM-DD" (UTC, 포함). from_date부터 정확히 8개 날짜여야 한다.
+     * </pre>
+     *
      * <code>string to_date = 3 [json_name = "toDate"];</code>
      * @param value The bytes for toDate to set.
      * @return This builder for chaining.
@@ -891,6 +999,10 @@ public  final class GetRetentionStatsRequest extends
     }
 
     /**
+     * <pre>
+     * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+     * </pre>
+     *
      * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
      * @return A list containing the retentionDays.
      */
@@ -901,6 +1013,10 @@ public  final class GetRetentionStatsRequest extends
           instance.getRetentionDaysList());
     }
     /**
+     * <pre>
+     * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+     * </pre>
+     *
      * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
      * @return The count of retentionDays.
      */
@@ -909,6 +1025,10 @@ public  final class GetRetentionStatsRequest extends
       return instance.getRetentionDaysCount();
     }
     /**
+     * <pre>
+     * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+     * </pre>
+     *
      * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
      * @param index The index of the element to return.
      * @return The retentionDays at the given index.
@@ -918,6 +1038,10 @@ public  final class GetRetentionStatsRequest extends
       return instance.getRetentionDays(index);
     }
     /**
+     * <pre>
+     * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+     * </pre>
+     *
      * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
      * @param value The retentionDays to set.
      * @return This builder for chaining.
@@ -929,6 +1053,10 @@ public  final class GetRetentionStatsRequest extends
       return this;
     }
     /**
+     * <pre>
+     * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+     * </pre>
+     *
      * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
      * @param value The retentionDays to add.
      * @return This builder for chaining.
@@ -939,6 +1067,10 @@ public  final class GetRetentionStatsRequest extends
       return this;
     }
     /**
+     * <pre>
+     * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+     * </pre>
+     *
      * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
      * @param values The retentionDays to add.
      * @return This builder for chaining.
@@ -950,6 +1082,10 @@ public  final class GetRetentionStatsRequest extends
       return this;
     }
     /**
+     * <pre>
+     * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+     * </pre>
+     *
      * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
      * @return This builder for chaining.
      */

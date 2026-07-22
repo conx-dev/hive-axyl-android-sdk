@@ -23,11 +23,19 @@ public interface GetRetentionStatsRequestOrBuilder extends
       getProjectIdBytes();
 
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). to_date까지 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string from_date = 2 [json_name = "fromDate"];</code>
    * @return The fromDate.
    */
   java.lang.String getFromDate();
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). to_date까지 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string from_date = 2 [json_name = "fromDate"];</code>
    * @return The bytes for fromDate.
    */
@@ -35,11 +43,19 @@ public interface GetRetentionStatsRequestOrBuilder extends
       getFromDateBytes();
 
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). from_date부터 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string to_date = 3 [json_name = "toDate"];</code>
    * @return The toDate.
    */
   java.lang.String getToDate();
   /**
+   * <pre>
+   * "YYYY-MM-DD" (UTC, 포함). from_date부터 정확히 8개 날짜여야 한다.
+   * </pre>
+   *
    * <code>string to_date = 3 [json_name = "toDate"];</code>
    * @return The bytes for toDate.
    */
@@ -47,16 +63,28 @@ public interface GetRetentionStatsRequestOrBuilder extends
       getToDateBytes();
 
   /**
+   * <pre>
+   * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+   * </pre>
+   *
    * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
    * @return A list containing the retentionDays.
    */
   java.util.List<java.lang.Integer> getRetentionDaysList();
   /**
+   * <pre>
+   * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+   * </pre>
+   *
    * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
    * @return The count of retentionDays.
    */
   int getRetentionDaysCount();
   /**
+   * <pre>
+   * D1~D7. 비어 있으면 D1~D7 전체를 조회한다.
+   * </pre>
+   *
    * <code>repeated int32 retention_days = 4 [json_name = "retentionDays"];</code>
    * @param index The index of the element to return.
    * @return The retentionDays at the given index.

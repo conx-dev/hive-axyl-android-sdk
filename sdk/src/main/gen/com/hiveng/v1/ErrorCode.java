@@ -62,6 +62,10 @@ public enum ErrorCode
    */
   ERROR_CODE_REQUEST_TIMEOUT(9),
   /**
+   * <code>ERROR_CODE_DEPENDENCY_UNAVAILABLE = 10;</code>
+   */
+  ERROR_CODE_DEPENDENCY_UNAVAILABLE(10),
+  /**
    * <pre>
    * 게이트 / 접속 (100-199)
    * </pre>
@@ -253,6 +257,10 @@ public enum ErrorCode
    */
   public static final int ERROR_CODE_REQUEST_TIMEOUT_VALUE = 9;
   /**
+   * <code>ERROR_CODE_DEPENDENCY_UNAVAILABLE = 10;</code>
+   */
+  public static final int ERROR_CODE_DEPENDENCY_UNAVAILABLE_VALUE = 10;
+  /**
    * <pre>
    * 게이트 / 접속 (100-199)
    * </pre>
@@ -428,6 +436,7 @@ public enum ErrorCode
       case 7: return ERROR_CODE_RATE_LIMITED;
       case 8: return ERROR_CODE_REQUEST_TOO_LARGE;
       case 9: return ERROR_CODE_REQUEST_TIMEOUT;
+      case 10: return ERROR_CODE_DEPENDENCY_UNAVAILABLE;
       case 100: return ERROR_CODE_MAINTENANCE_IN_PROGRESS;
       case 101: return ERROR_CODE_GEO_BLOCKED;
       case 102: return ERROR_CODE_CLIENT_VERSION_UNSUPPORTED;

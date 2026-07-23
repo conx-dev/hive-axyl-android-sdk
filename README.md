@@ -28,7 +28,7 @@ Add the SDK dependency to your app module:
 
 ```kotlin
 dependencies {
-    implementation("io.github.conx-dev:hive-axyl-android-sdk:0.2.0")
+    implementation("io.github.conx-dev:hive-axyl-android-sdk:0.2.1")
 }
 ```
 
